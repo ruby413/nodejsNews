@@ -99,6 +99,7 @@
 <br/>
 
 :woman_technologist: : REPORT
+
 | Key            | Value           |
 | -------------- | --------------- |
 | reporter       | 작성자   |
@@ -113,5 +114,5 @@
 
 <br/><br/>
 
-## :massage_woman: 추후 확장
-- Admin DashBoard 화면
+## :desktop_computer: 추후 확장
+:massage_woman: Admin DashBoard 화면
