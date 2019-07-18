@@ -5,32 +5,32 @@
 
 ## :desktop_computer: 화면구조 
 :page_facing_up:  main page
-    - 조회 수가 높은 순으로 상단에 보여집니다.
-    - 댓글이 많은 순으로 보여지는 section 과 최근 업로드 된 순으로 보여지는 section이 있습니다.
-    - 각각의 카테고리를 클릭했을 때, main page와 동일힌 구조로 보여집니다.
-![Alt text](image/main.png)
+- 조회 수가 높은 순으로 상단에 보여집니다.
+- 댓글이 많은 순으로 보여지는 section 과 최근 업로드 된 순으로 보여지는 section이 있습니다.
+- 각각의 카테고리를 클릭했을 때, main page와 동일힌 구조로 보여집니다.
+<img src = "image/main.png" width ="300px">
 
 <br/>
 
 :page_facing_up: 회원가입 / 로그인 페이지
-    - 회원가입은 이름, 이메일주소, 비밀번호로 구성되어 있습니다.
-    - 로그인은 등록된 이메일주소, 비밀번호로 들어갈 수 있습니다.
-![Alt text](image/login.png)
-![Alt text](image/signup.png)
+- 회원가입은 이름, 이메일주소, 비밀번호로 구성되어 있습니다.
+- 로그인은 등록된 이메일주소, 비밀번호로 들어갈 수 있습니다.
+<img src = "image/login.png" width ="300px">
+<img src = "image/signup.png" width ="300px">
 
 <br/>
 
 :page_facing_up: News Page
-    - 기사 제목, 기사 내용, 모든 댓글, 댓글 달기 공간으로 나뉘어져 있습니다.
-    - 댓글에는 좋아요 기능이 추가되어 있습니다.
-![Alt text](image/news.png)
+- 기사 제목, 기사 내용, 모든 댓글, 댓글 달기 공간으로 나뉘어져 있습니다.
+- 댓글에는 좋아요 기능이 추가되어 있습니다.
+<img src = "image/news.png" width ="300px">
 
 <br/>
 
 :page_facing_up: POST 페이지
-    - 제목과 게시물을 작성해서 post 할 수 있습니다.
-    - 이미지를 첨부해서 올릴 수 있습니다.
-![Alt text](image/board.png)
+- 제목과 게시물을 작성해서 post 할 수 있습니다.
+- 이미지를 첨부해서 올릴 수 있습니다.
+<img src = "image/board.png" width ="300px">
 
 <br/><br/>
 
