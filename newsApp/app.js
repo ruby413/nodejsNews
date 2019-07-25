@@ -2,15 +2,19 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const path = require('path');
+const mongoose = require('mongoose');
 const session = require('express-session');
 const flash = require('connect-flash');
 require('dotenv').config();
 
-const pageRouter = require('./routes/page');
+const pageRouter = require('./routes/index');
+const authRouter = require('./routes/auth');
 // const connect = require('./schemas')
 
 const app = express();
 // connect()
+
+mongoose.connect('mongodb://localhost:27017/myapp', {useNewUrlParser: true})
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -19,8 +23,9 @@ app.set('port', process.env.PORT || 8001);
 // app.use(function(req, res, next) {
 //   res.render('index');
 // });
+
 app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
@@ -35,7 +40,8 @@ app.use(session({
 }));
 app.use(flash());
 
-app.use('/', pageRouter);
+app.use('/', indexRouter);
+app.use('/auth', authRouter);
 
 app.use((req, res, next) => {
   const err = new Error('Not Found');
