@@ -2,6 +2,7 @@ extends layout
 
 block content
   .container
+  p #{err}
     form#join-form(action='/auth/login' method='post')
       input#email(placeholder = 'email' name='email')
       input#password(placeholder = 'password' name='password')

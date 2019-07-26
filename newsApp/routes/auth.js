@@ -2,9 +2,10 @@ const express = require('express');
 
 const router = express.Router();
 
-router.post('/login', (req, res) => {
-  console.log(req.sessionID)
-});
+// router.get('/auth/login', (req, res) => {
+//     let flash = req.flash()
+//     res.render('login', {title: 'LoginPage', err: flash.error})
+// });
 
 router.get('/logout', (req, res) => {
     req.logout();

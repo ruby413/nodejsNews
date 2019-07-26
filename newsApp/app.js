@@ -39,6 +39,7 @@ app.use(session({
     secure: false,
   },
 }));
+app.use(flash());
 
 const authData = {
   email : "123",
@@ -83,12 +84,10 @@ passport.use(new LocalStrategy(
 app.post('/auth/login',
   passport.authenticate('local', { 
     successRedirect: '/',
-    failureRedirect: '/' 
+    // failureRedirect: '/login',
+    failureFlash : true
   })
 );
-
-
-app.use(flash());
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
