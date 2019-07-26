@@ -1,17 +1,6 @@
 extends layout
 
 block content
-    if user
-        block content
-            .hello 로그인 되었습니다
-    else
-        block content
-            .container
-                if user && user.id
-                    .user-name= '안녕하세요! ' + user.nick + '님'
-                    a#logout(href='/auth/logout') logout
-                else
-                    input#email(placeholder = 'email')
-                    input#password(placeholder = 'password')
-                    button#loginSubmit(type = 'submit') login
-                    a#join(href = '/join') sign up
+    user= user
+    .hello #{user}님 로그인 되었습니다
+    a#logout(href="/auth/logout") logout
