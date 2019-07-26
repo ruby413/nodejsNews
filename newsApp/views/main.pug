@@ -1,6 +1,5 @@
 extends layout
 
 block content
-    user= user
-    .hello #{user}님 로그인 되었습니다
+    .hello #{data}님 로그인 되었습니다
     a#logout(href="/auth/logout") logout
