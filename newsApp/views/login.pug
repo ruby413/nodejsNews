@@ -5,7 +5,7 @@ block content
   p #{err}
     form#join-form(action='/auth/login' method='post')
       input#email(placeholder = 'email' name='email')
-      input#password(placeholder = 'password' name='password')
+      input#password(type = 'password' placeholder = 'password' name='password')
       button#loginSubmit(type = 'submit') login
       a#join(href = '/auth/join') sign up
     
