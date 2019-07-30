@@ -5,11 +5,12 @@ const path = require('path');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const flash = require('connect-flash');
+const connect = require('./schemas');
 require('dotenv').config();
 
 const app = express();
+connect();
 
-mongoose.connect('mongodb://localhost:27017/myapp', {useNewUrlParser: true})
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

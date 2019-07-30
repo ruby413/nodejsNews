@@ -1,5 +1,5 @@
+const User = require('../schemas/user');
 const express = require('express');
-
 const router = express.Router();
 
 module.exports = function (passport) {
@@ -10,11 +10,6 @@ module.exports = function (passport) {
         res.redirect('/login')
         }
     });
-    
-    router.get('/login', (req, res) => {
-        let flash = req.flash()
-        res.render('login', {title: 'LoginPage', err: flash.error})
-    });
 
     router.post('/login',
         passport.authenticate('local', { 
@@ -24,8 +19,15 @@ module.exports = function (passport) {
         })
     );
 
-    router.get('/join', (req, res) => {
-        console.log("joinPage")
+    router.post('/join', (req, res) => {
+        console.log(req.body.email)
+        // console.log(req.query)
+        User.create({
+            id : req.body.email,
+            name :  req.body.nick,
+            password : req.body.password,
+            privilege : "normal"
+        })
         res.render('join', {title : 'signUp page'})
     })
     
@@ -39,4 +41,4 @@ module.exports = function (passport) {
     return router
 }
 
-// module.exports = router;
+// module.exports = router;req.body.email

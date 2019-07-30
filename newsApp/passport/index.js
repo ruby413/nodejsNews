@@ -25,11 +25,11 @@ module.exports = function (app){
         },
         function(email, password, done) {
             if(email === authData.email){
-            if(password === authData.password){
-                return done(null, authData);
-            }else{
-                return done(null, false, { message: 'Incorrect password.' });
-            }
+                if(password === authData.password){
+                    return done(null, authData);
+                }else{
+                    return done(null, false, { message: 'Incorrect password.' });
+                }
             }else{
             return done(null, false, { message: 'Incorrect email.' });
             }

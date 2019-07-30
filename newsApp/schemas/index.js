@@ -6,7 +6,7 @@ module.exports = () => {
       mongoose.set('debug', true);
     }
     mongoose.connect('mongodb://ruby:1234@localhost:27017/admin', {
-      dbName: 'nodejs',
+      dbName: 'newsUser',
     }, (error) => {
       if (error) {
         console.log('몽고디비 연결 에러', error);
@@ -25,5 +25,5 @@ module.exports = () => {
   });
 
   require('./user');
-  require('./comment');
+  // require('./comment');
 };
