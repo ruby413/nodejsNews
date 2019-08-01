@@ -1,9 +1,5 @@
 module.exports = function (app){
-    const authData = {
-    email : "123",
-    nick : "ruby",
-    password : "123"
-    }
+    const User  = require("../schemas/user");
     const passport = require('passport')
     , LocalStrategy = require('passport-local').Strategy;
 
@@ -11,11 +7,11 @@ module.exports = function (app){
     app.use(passport.session())
 
     passport.serializeUser(function(user, done) {
-    done(null, user.email);
+        done(null, user.email);
     });
 
-    passport.deserializeUser(function(id, done) {
-    done(null, authData);
+    passport.deserializeUser(function(email, done) {
+        done(null, email);
     });
 
     passport.use(new LocalStrategy(
@@ -23,18 +19,20 @@ module.exports = function (app){
             usernameField : 'email',
             passwordField : 'password'
         },
-        function(email, password, done) {
-            if(email === authData.email){
-                if(password === authData.password){
-                    return done(null, authData);
+        async function(email, password, done) {
+            const isUser = await User.findOne({email: email});
+            const isPassword = isUser ? await isUser.password === password : false;
+            if(isUser){
+                if(isPassword){
+                    return done(null, isUser);
                 }else{
                     return done(null, false, { message: 'Incorrect password.' });
                 }
             }else{
-            return done(null, false, { message: 'Incorrect email.' });
+                return done(null, false, { message: 'Incorrect email.' });
             }
         }
     ));
-
+    
     return passport
 }

@@ -19,15 +19,29 @@ module.exports = function (passport) {
         })
     );
 
-    router.post('/join', (req, res) => {
-        console.log(req.body.email)
-        // console.log(req.query)
-        User.create({
-            id : req.body.email,
-            name :  req.body.nick,
-            password : req.body.password,
-            privilege : "normal"
+    router.post('/join', async (req, res) =>{
+        // const isUser = await User.findOne({email: req.body.email});
+        // if(isUser){
+        //     // req.flash('signUpError', '이미 가입된 이메일입니다.');
+        // }else{
+
+        // }       
+        // User.create({
+        //     email : req.body.email,
+        //     name :  req.body.nick,
+        //     password : req.body.password,
+        //     privilege : "normal"
+        // })
+        let {email, nick, password} = req.body
+        console.log(email, nick, password)
+        let user = new User({ 
+            email : email,
+            name :  nick,
+            password : password,
+            privilege : "normal" 
         })
+        user.save()
+        // console.log(user)
         res.render('join', {title : 'signUp page'})
     })
     
@@ -40,5 +54,3 @@ module.exports = function (passport) {
     
     return router
 }
-
-// module.exports = router;req.body.email
