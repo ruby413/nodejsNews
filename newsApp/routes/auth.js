@@ -25,10 +25,9 @@ module.exports = function (passport) {
                     privilege : "normal" 
                 })
                 await user.save()
-                res.render('join', {title : 'signUp page'})
+                res.redirect('/login')
             }   
         }catch(error){
-            console.log(error)
             res.status(500).render('join', {err: "서버 에러가 발생했습니다. 관리자에게 문의해주세요."})
         }
     })

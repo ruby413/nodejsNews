@@ -2,7 +2,6 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const path = require('path');
-const mongoose = require('mongoose');
 const session = require('express-session');
 const flash = require('connect-flash');
 const connect = require('./schemas');
@@ -10,7 +9,6 @@ require('dotenv').config();
 
 const app = express();
 connect();
-
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

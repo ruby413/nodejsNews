@@ -26,10 +26,10 @@ module.exports = function (app){
                     if(isUser.password === password){
                         return done(null, isUser);
                     }else{
-                        return done(null, false, { message: 'Incorrect password.' });
+                        return done(null, false, { message: '비밀번호가 잘못되었습니다.' });
                     }
                 }else{
-                    return done(null, false, { message: 'Incorrect email.' });
+                    return done(null, false, { message: '이메일이 잘못되었습니다.' });
                 }
             }catch(error){
                 done(error, false, { message: '서버 에러가 발생했습니다. 관리자에게 문의해주세요.' });
