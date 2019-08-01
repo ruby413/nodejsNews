@@ -2,11 +2,12 @@ extends layout
 
 block content
   .timeline
+  p #{err}
     form#join-form(action='/auth/join' method='post')
       .input-group
         input#join-email(type='email' name='email' placeholder="Email")
       .input-group
-        input#join-nick(type='text' name='nick' placeholder="NickName")
+        input#join-nick(type='text' name='name' placeholder="NickName")
       .input-group
         input#join-password(type='password' name='password' placeholder="PassWord")
       if joinError

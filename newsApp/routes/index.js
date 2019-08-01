@@ -4,9 +4,9 @@ const router = express.Router();
 
 router.get('/', (req, res, next) => {
     if(req.user){
-        res.render('main', {title: 'NewsPage', data: req.user.nick})
+        res.render('main', {title: 'NewsPage', data: req.user.name})
     }else{
-       res.redirect('/login')
+        res.redirect('/login')
     }
   });
 router.get('/login', (req, res) => {
@@ -15,7 +15,6 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/join', (req, res) => {
-    console.log("joinPage")
     res.render('join', {title : 'signUp page'})
 })
 

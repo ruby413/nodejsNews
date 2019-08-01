@@ -20,16 +20,19 @@ module.exports = function (app){
             passwordField : 'password'
         },
         async function(email, password, done) {
-            const isUser = await User.findOne({email: email});
-            const isPassword = isUser ? await isUser.password === password : false;
-            if(isUser){
-                if(isPassword){
-                    return done(null, isUser);
+            try{
+                const isUser = await User.findOne({email: email});
+                if(isUser){
+                    if(isUser.password === password){
+                        return done(null, isUser);
+                    }else{
+                        return done(null, false, { message: 'Incorrect password.' });
+                    }
                 }else{
-                    return done(null, false, { message: 'Incorrect password.' });
+                    return done(null, false, { message: 'Incorrect email.' });
                 }
-            }else{
-                return done(null, false, { message: 'Incorrect email.' });
+            }catch(error){
+                done(error, false, { message: '서버 에러가 발생했습니다. 관리자에게 문의해주세요.' });
             }
         }
     ));

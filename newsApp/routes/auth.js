@@ -3,14 +3,6 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = function (passport) {
-    router.get('/', (req, res, next) => {
-        if(req.user){
-            res.render('main', {title: 'NewsPage', data: req.user.nick})
-        }else{
-        res.redirect('/login')
-        }
-    });
-
     router.post('/login',
         passport.authenticate('local', { 
             successRedirect: '/',
@@ -19,30 +11,26 @@ module.exports = function (passport) {
         })
     );
 
-    router.post('/join', async (req, res) =>{
-        // const isUser = await User.findOne({email: req.body.email});
-        // if(isUser){
-        //     // req.flash('signUpError', '이미 가입된 이메일입니다.');
-        // }else{
-
-        // }       
-        // User.create({
-        //     email : req.body.email,
-        //     name :  req.body.nick,
-        //     password : req.body.password,
-        //     privilege : "normal"
-        // })
-        let {email, nick, password} = req.body
-        console.log(email, nick, password)
-        let user = new User({ 
-            email : email,
-            name :  nick,
-            password : password,
-            privilege : "normal" 
-        })
-        user.save()
-        // console.log(user)
-        res.render('join', {title : 'signUp page'})
+    router.post('/join', async (req, res, next) =>{
+        try{
+            const isUser = await User.findOne({email: req.body.email});
+            if(isUser){
+                res.render('join', {err: "이미 메일계정이 등록되어 있습니다."})
+            }else{
+                let {email, name, password} = req.body
+                let user = new User({ 
+                    email : email,
+                    name :  name,
+                    password : password,
+                    privilege : "normal" 
+                })
+                await user.save()
+                res.render('join', {title : 'signUp page'})
+            }   
+        }catch(error){
+            console.log(error)
+            res.status(500).render('join', {err: "서버 에러가 발생했습니다. 관리자에게 문의해주세요."})
+        }
     })
     
     router.get('/logout', (req, res) => {
