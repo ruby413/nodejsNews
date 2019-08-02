@@ -30,7 +30,7 @@ module.exports = function (passport) {
                 res.redirect('/login')
             }   
         }catch(error){
-            res.status(500).render('join', {err: msg[40002]})
+            res.status(500).render('join', {err: msg[40001]})
         }
     })
     
