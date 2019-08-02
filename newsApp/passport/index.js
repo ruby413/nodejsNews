@@ -1,4 +1,5 @@
 module.exports = function (app){
+    const msg = require('../routes/errormsg');
     const User  = require("../schemas/user");
     const passport = require('passport')
     , LocalStrategy = require('passport-local').Strategy;
@@ -20,19 +21,20 @@ module.exports = function (app){
             passwordField : 'password'
         },
         async function(email, password, done) {
+            console.log(email)
             try{
                 const isUser = await User.findOne({email: email});
                 if(isUser){
                     if(isUser.password === password){
                         return done(null, isUser);
                     }else{
-                        return done(null, false, { message: '* 비밀번호가 잘못되었습니다.' });
+                        return done(null, false, { message: msg[60001]});
                     }
                 }else{
-                    return done(null, false, { message: '* 이메일이 잘못되었습니다.' });
+                    return done(null, false, { message: msg[40001]});
                 }
             }catch(error){
-                done(error, false, { message: '* 서버 에러가 발생했습니다. 관리자에게 문의해주세요.' });
+                done(error, false, { message: msg[40002] });
             }
         }
     ));

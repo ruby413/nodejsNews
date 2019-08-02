@@ -4,9 +4,9 @@ const router = express.Router();
 
 router.get('/', (req, res, next) => {
     if(req.user){
-        res.render('main', {title: 'NewsPage', data: req.user.name})
+        res.render('main', {title: 'NewsPage', data: "login"})
     }else{
-        res.redirect('/login')
+        res.render('main', {title: 'NewsPage', data: "notLogin"})
     }
   });
 router.get('/login', (req, res) => {

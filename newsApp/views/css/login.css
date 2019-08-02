@@ -5,20 +5,31 @@ body{
 }
 .container{
     background: #333;
-    position: relative;
+    position: absolute;
     width: 100%;
     height: 1000px;
     overflow: hidden;
     padding-bottom: 56.26%;
     opacity: 0.3;
+    top: 0px;
+    left: 0px;
 }
 
-.loginSignup{
+.login{
     position: absolute;
     top: 29%;
     left: 35%;
     width: 415px;
     height: 367px;
+    background: #fff;
+}
+
+.signup{
+    position: absolute;
+    top: 27%;
+    left: 35%;
+    width: 415px;
+    height: 415px;
     background: #fff;
 }
 
@@ -38,7 +49,7 @@ body{
     margin-top: 25px;
 }
 
-#join-form > button,  #join-form > a {
+#loginButtom,  #joinButton {
     padding: 10px 0px;
     font-size: 23px;
     color: #fff;
@@ -50,17 +61,28 @@ body{
     text-decoration: none;
     cursor: pointer;
 }
-#join-form > button{
+#loginButtom{
     background: #526ABE;
 }
-#join-form > a{
+#joinButton{
     background: #5CB6E8;
 }
 
-#join-form > button:hover{
+#loginButtomMain{
+    font-size: 23px;
+    margin-right: 10px;
+    color: #333;
+}
+
+#joinButtonMain{
+    font-size: 23px;
+    color: #333;
+}
+
+#loginButtom:hover{
     background: #465aa2
 }
-#join-form > a:hover{
+#joinButton:hover{
     background: #48aee6
 }
 
@@ -93,4 +115,5 @@ body{
     padding-top: 4px;
     color: #ffffff;
     cursor: pointer;
+    text-decoration: none
 }

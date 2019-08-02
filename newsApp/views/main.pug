@@ -1,5 +1,15 @@
-extends layout
-
-block content
-    .hello 로그인 되었습니다
-    a#logout(href="/auth/logout") logout
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/css/login.css')
+  body
+    if data == "login"
+        div#login
+            a#logout(href="/auth/logout") logout
+        block content
+    else 
+        div#notLogin
+            a#loginButtomMain(href = '/login') Login
+            a#joinButtonMain(href = '/join') Sign up
+        block content
