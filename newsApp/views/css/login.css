@@ -1,8 +1,4 @@
 @charset "utf-8"; 
-* {padding : 0px; margin :0px;}
-body{
-    overflow-y: hidden;
-}
 .container{
     background: #333;
     position: absolute;
@@ -14,7 +10,11 @@ body{
     top: 0px;
     left: 0px;
 }
-
+#loginSection{
+    position: absolute;
+    top: 55px;
+    right: 60px;
+}
 .login{
     position: absolute;
     top: 29%;
@@ -69,13 +69,13 @@ body{
 }
 
 #loginButtomMain{
-    font-size: 23px;
+    font-size: 18px;
     margin-right: 10px;
     color: #333;
 }
 
 #joinButtonMain{
-    font-size: 23px;
+    font-size: 18px;
     color: #333;
 }
 
