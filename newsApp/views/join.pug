@@ -2,7 +2,9 @@ extends layout
 
 block content
   .timeline
-  p #{err}
+  p#title SIGN UP
+  p#out x
+  p#error #{err}
     form#join-form(action='/auth/join' method='post')
       .input-group
         input#join-email(type='email' name='email' placeholder="Email")
@@ -12,5 +14,5 @@ block content
         input#join-password(type='password' name='password' placeholder="PassWord")
       if joinError
         .error-message= joinError
-      button#join-btn.btn(type='submit') 회원가입
-      a#login(href = '/login') 로그인
+      button#join-btn.btn(type='submit') Sign up
+      a#login(href = '/login') Login

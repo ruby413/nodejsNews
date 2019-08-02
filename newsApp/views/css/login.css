@@ -1,0 +1,96 @@
+@charset "utf-8"; 
+* {padding : 0px; margin :0px;}
+body{
+    overflow-y: hidden;
+}
+.container{
+    background: #333;
+    position: relative;
+    width: 100%;
+    height: 1000px;
+    overflow: hidden;
+    padding-bottom: 56.26%;
+    opacity: 0.3;
+}
+
+.loginSignup{
+    position: absolute;
+    top: 29%;
+    left: 35%;
+    width: 415px;
+    height: 367px;
+    background: #fff;
+}
+
+#join-form input {
+    padding: 5px;
+    font-size: 20px;
+    width: 300px;
+    background: #F8F8F8;
+    height: 35px;
+    color: #555;
+    border: 1px solid #ddd;
+    margin-bottom : 10px
+}
+
+#join-form{
+    margin: 49px;
+    margin-top: 25px;
+}
+
+#join-form > button,  #join-form > a {
+    padding: 10px 0px;
+    font-size: 23px;
+    color: #fff;
+    border: none;
+    margin-bottom: 10px;
+    display: inline-block;
+    width: 313px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+#join-form > button{
+    background: #526ABE;
+}
+#join-form > a{
+    background: #5CB6E8;
+}
+
+#join-form > button:hover{
+    background: #465aa2
+}
+#join-form > a:hover{
+    background: #48aee6
+}
+
+#error{
+    margin-left: 48px;
+    font-size: 13px;
+    color: #c30000;
+    position: absolute;
+    top: 78px;
+}
+#title{
+    font-size: 38px;
+    margin-top: 31px;
+    margin-bottom: 9px;
+    margin-left: 48px;
+}
+
+#out{
+    position: absolute;
+    top: -17px;
+    right: -15px;
+    display: inline;
+    background: #757575;
+    padding: 0px;
+    font-size: 37px;
+    border-radius: 50%;
+    width: 51px;
+    height: 47px;
+    text-align: center;
+    padding-top: 4px;
+    color: #ffffff;
+    cursor: pointer;
+}
