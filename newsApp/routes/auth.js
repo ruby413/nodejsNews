@@ -18,8 +18,6 @@ module.exports = function (passport) {
             const isUser = await User.findOne({email: req.body.email});
             if(isUser){
                 res.render('join', {err: msg[50001]})
-            }else if(isUser === null){
-                res.render('join', {err: msg[40001]});
             }else{
                 let {email, name, password} = req.body
                 let user = new User({ 
