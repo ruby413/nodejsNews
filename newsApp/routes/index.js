@@ -10,8 +10,9 @@ router.get('/', (req, res, next) => {
     }
   });
 router.get('/login', (req, res) => {
-    let flash = req.flash()
-    res.render('login', {title: 'LoginPage', err: flash.error})
+    // let flash = req.flash()
+    // res.render('login', {title: 'LoginPage', err: flash.error})
+    res.render('login', {title: 'LoginPage'})
 });
 
 router.get('/join', (req, res) => {

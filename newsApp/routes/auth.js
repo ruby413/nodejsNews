@@ -1,17 +1,25 @@
 const User = require('../schemas/user');
 const msg = require('../routes/errormsg');
+const jwt = require("jsonwebtoken");
 const express = require('express');
 const router = express.Router();
 
 module.exports = function (passport) {
-    router.post('/login',
-        passport.authenticate('local', { 
-            successRedirect: '/',
-            failureRedirect: '/login',
-            failureFlash : true,
-            badRequestMessage: msg[40001]
-        })
-    );
+    router.post('/login', async (req, res) => {
+        let { email, password } = req.body;
+        const isUserId = await User.findOne({email: email});
+        const isUserPw = await User.findOne({password: password});
+        if(isUserId && isUserPw){
+            const opts = {}
+            opts.expiresIn = 120;  
+            const secret = process.env.COOKIE_SECRET; 
+            const token = jwt.sign({ email }, secret, opts);
+            res.cookie('access-token', token);
+            return res.redirect('/')
+        }
+        return res.status(401).json({ message: "Auth Failed" })
+    });
+
 
     router.post('/join', async (req, res, next) =>{
         try{
