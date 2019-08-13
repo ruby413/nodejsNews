@@ -17,7 +17,7 @@ module.exports = function () {
             res.cookie('access-token', token);
             return res.redirect('/')
         }
-        return res.status(401).json({ message: "Auth Failed" })
+        res.render('login', { err: msg[40001] });
     });
 
 
