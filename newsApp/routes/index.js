@@ -1,9 +1,8 @@
 const express = require('express');
-
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
-    if(req.user){
+    if(req.cookies["access-token"]){
         res.render('main', {title: 'NewsPage', data: "login"})
     }else{
         res.render('main', {title: 'NewsPage', data: "notLogin"})

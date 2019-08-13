@@ -1,8 +1,9 @@
 const express = require('express');
-// const cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const path = require('path');
 const bodyParser = require("body-parser");
+
 // const session = require('express-session');
 const flash = require('connect-flash');
 const connect = require('./schemas');
@@ -20,6 +21,7 @@ app.use(morgan('dev'));
 // app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
+app.use(cookieParser())
 // app.use(cookieParser(process.env.COOKIE_SECRET));
 // app.use(session({
 //   resave: false,

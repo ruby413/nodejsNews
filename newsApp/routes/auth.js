@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const express = require('express');
 const router = express.Router();
 
-module.exports = function (passport) {
+module.exports = function () {
     router.post('/login', async (req, res) => {
         let { email, password } = req.body;
         const isUserId = await User.findOne({email: email});
@@ -44,9 +44,8 @@ module.exports = function (passport) {
     
     router.get('/logout', (req, res) => {
         req.logout();
-        req.session.destroy((err) => {
-            res.redirect('/')
-        })
+        res.cookie('access-token', "");
+        res.redirect('/')
     })
     
     return router

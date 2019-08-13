@@ -2,7 +2,6 @@ module.exports = function (app){
     const msg = require('../routes/errormsg');
     const User  = require("../schemas/user");
     const passport = require('passport')
-    // , LocalStrategy = require('passport-local').Strategy;
     const JwtStrategy = require('passport-jwt').Strategy;
     const ExtractJwt = require('passport-jwt').ExtractJwt;
     const opts = {}
