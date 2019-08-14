@@ -11,7 +11,7 @@ module.exports = function () {
         const isUserPw = await User.findOne({password: password});
         if(isUserId && isUserPw){
             const opts = {}
-            opts.expiresIn = 120;  
+            opts.expiresIn = 60 * 60 * 24 * 7;  
             const secret = process.env.COOKIE_SECRET; 
             const token = jwt.sign({ email }, secret, opts);
             res.cookie('access-token', token);
@@ -43,9 +43,8 @@ module.exports = function () {
     })
     
     router.get('/logout', (req, res) => {
-        req.logout();
-        res.cookie('access-token', "");
-        res.redirect('/')
+        res.clearCookie("access-token")
+        return res.redirect('/')
     })
     
     return router

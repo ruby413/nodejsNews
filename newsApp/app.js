@@ -19,9 +19,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 app.use(cookieParser())
 
-const passport = require('./passport/index')(app)
 const indexRouter = require('./routes/index');
-const authRouter = require('./routes/auth')(passport);
+const authRouter = require('./routes/auth')();
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);

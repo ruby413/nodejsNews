@@ -1,8 +1,11 @@
 const express = require('express');
+const jwt = require("jsonwebtoken");
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
-    if(req.cookies["access-token"]){
+    let token = req.cookies["access-token"];
+    let decode = jwt.verify(token, process.env.COOKIE_SECRET, (err, decoded) => {return err ? false : decoded;});
+    if(token && decode){
         res.render('main', {title: 'NewsPage', data: "login"})
     }else{
         res.render('main', {title: 'NewsPage', data: "notLogin"})
