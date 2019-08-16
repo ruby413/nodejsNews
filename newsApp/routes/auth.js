@@ -2,6 +2,7 @@ const User = require('../schemas/user');
 const msg = require('../routes/errormsg');
 const jwt = require("jsonwebtoken");
 const express = require('express');
+const bcrypt = require('bcrypt-nodejs')
 const router = express.Router();
 
 module.exports = function () {
@@ -28,13 +29,15 @@ module.exports = function () {
                 res.render('join', {err: msg[50001]})
             }else{
                 let {email, name, password} = req.body
-                let user = new User({ 
-                    email : email,
-                    name :  name,
-                    password : password,
-                    privilege : "normal" 
+                bcrypt.hash(password, null, null, async (err, hash) => {
+                    let user = new User({ 
+                        email : email,
+                        name :  name,
+                        password : hash,
+                        privilege : "normal" 
+                    })
+                    await user.save()
                 })
-                await user.save()
                 res.redirect('/login')
             }   
         }catch(error){
