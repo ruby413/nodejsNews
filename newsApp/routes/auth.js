@@ -9,16 +9,17 @@ module.exports = function () {
     router.post('/login', async (req, res) => {
         let { email, password } = req.body;
         const isUserId = await User.findOne({email: email});
-        const isUserPw = await User.findOne({password: password});
-        if(isUserId && isUserPw){
-            const opts = {}
-            opts.expiresIn = 60 * 60 * 24 * 7;  
-            const secret = process.env.COOKIE_SECRET; 
-            const token = jwt.sign({ email }, secret, opts);
-            res.cookie('access-token', token);
-            return res.redirect('/')
-        }
-        res.render('login', { err: msg[40001] });
+        bcrypt.compare(password, isUserId.password,  (err, isUserPw) => {
+            if(isUserId && isUserPw){
+                const opts = {}
+                opts.expiresIn = 60 * 60 * 24 * 7;  
+                const secret = process.env.COOKIE_SECRET; 
+                const token = jwt.sign({ email }, secret, opts);
+                res.cookie('access-token', token);
+                return res.redirect('/')
+            }
+            res.render('login', { err: msg[40001] });
+        })
     });
 
 
