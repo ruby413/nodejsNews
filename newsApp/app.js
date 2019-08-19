@@ -21,9 +21,11 @@ app.use(cookieParser())
 
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth')();
+const postRouter = require('./routes/post');
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
+app.use('/post', postRouter);
 
 app.use((req, res, next) => {
   const err = new Error('Not Found');

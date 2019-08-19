@@ -20,4 +20,32 @@ let User = mongoose.model('User', new mongoose.Schema({
   },
 }));
 
+let Report = mongoose.model('Report', new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  subject: {
+    type: String,
+    required: true
+  },
+  image: {
+    type: String,
+    required: true
+  },
+  reportDate: {
+    type: Date,
+    default: Date.now
+  },
+  contents: {
+    type: String
+  },
+  comments: {
+    type: String
+  },
+  commentsGood: {
+    type: Number
+  }
+}));
+
 module.exports = User

@@ -23,7 +23,7 @@ module.exports = function () {
     });
 
 
-    router.post('/join', async (req, res, next) =>{
+    router.post('/join', async (req, res) =>{
         try{
             const isUser = await User.findOne({email: req.body.email});
             if(isUser){

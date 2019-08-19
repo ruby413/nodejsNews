@@ -11,6 +11,8 @@ html
     div#loginSection
         if data == "login"
           a#logout(href="/auth/logout") logout
+          div#postButtonDiv
+            a#post(href="/post") post
         else 
           a#loginButtomMain(href = '/login') Login
           a#joinButtonMain(href = '/join') Sign up
