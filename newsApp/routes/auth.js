@@ -9,10 +9,11 @@ module.exports = function () {
     router.post('/login', async (req, res) => {
         let { email, password } = req.body;
         const isUserId = await User.findOne({email: email});
+        const isUserName = await User.findOne({email: email}).select('name')
         const opts = {}
         opts.expiresIn = 60 * 60 * 24 * 7;  
         const secret = process.env.COOKIE_SECRET; 
-        const token = jwt.sign({ email }, secret, opts);
+        const token = jwt.sign({ name : isUserName['name'], email : email }, secret, opts);
         bcrypt.compare(password, isUserId.password,  (err, isUserPw) => {
             if(isUserId && isUserPw){
                 res.cookie('access-token', token);
