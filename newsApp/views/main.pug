@@ -3,7 +3,7 @@ html
   head
     title= title
     link(rel='stylesheet', href='/css/main.css')
-    link(rel='stylesheet', href='/css/login.css')
+    script(src='/js/layout.js')
   body
     .h1Container
         h1 
@@ -19,4 +19,7 @@ html
         else 
           a#loginButtomMain(href = '/login') Login
           a#joinButtonMain(href = '/join') Sign up
+    if status !== "post"
+      section#postWrap 
+        img(src="https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823__480.jpg")
     block content

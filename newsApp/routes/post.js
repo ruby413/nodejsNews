@@ -9,8 +9,7 @@ router.post('/', async (req, res)=>{
     let subject = req.body.subject;
     let image = req.body.image;
     let contents = req.body.contents;
-    console.log(req.body)
-    console.log(decode)
+
     if(token){
         let article = new Article({ 
             email :  decode.email,
@@ -32,7 +31,6 @@ router.get('/', (req, res)=>{
 })
 
 router.post('/save', (req, res) => {
-    console.log("req",req.body)
     return res.redirect('/post')
 });
 
