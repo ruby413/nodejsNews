@@ -6,13 +6,16 @@ const router = express.Router();
 router.get('/', async(req, res, next) => {
     let token = req.cookies["access-token"];
     let decode = jwt.verify(token, process.env.COOKIE_SECRET, (err, decoded) => {return err ? false : decoded;});
-    let contents = [];
+    let article = [];
     let contentAll = await Article.find({})
-    contentAll.forEach( (content, i) => { if(contentAll.length-5<=i){contents.push(content)} } )
+    contentAll.forEach( (content, i) => { if(contentAll.length-5<=i){article.push(content)} } )
     if(token && decode){
-        res.render('main', {title: 'NewsPage', data: "login", contents : contents})
+        console.log(article[0])
+        res.render('main', {title: 'NewsPage', data: "login", article : article})
     }else{
-        res.render('main', {title: 'NewsPage', data: "notLogin", contents : contents})
+        console.log(article[0])
+
+        res.render('main', {title: 'NewsPage', data: "notLogin", article : article})
     }
   });
 router.get('/login', (req, res) => {
