@@ -24,10 +24,11 @@ html
         if article
           each val in article
             li.newCardLi
-              p.newCardSubject= val.subject
-              p.newCardContents= val.contents
-              p.black 
-              img.newCardImg(src= val.image)
+              a(href=`/post/${val._id}`)
+                p.newCardSubject= val.subject
+                p.newCardContents= val.contents
+                p.black 
+                img.newCardImg(src= val.image)
         else
           li.newCardLi
             p.noContent 내용이 없습니다.
