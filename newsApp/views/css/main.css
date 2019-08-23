@@ -37,8 +37,8 @@ h1 img{
     position: absolute;
 }
 .black:hover{
-    background: #ccc;
-    opacity: 0.1;
+    background: #6b6b6b;
+    opacity: 0.3;
     cursor: pointer;
 }
 .newCardImg{
@@ -56,6 +56,8 @@ h1 img{
     font-weight: bold;
     padding: 10px;
     bottom: 23px;
+    z-index: 10000;
+    color:#fff
 }
 .newCardContents{
     overflow: hidden;
@@ -68,4 +70,6 @@ h1 img{
     font-weight: bold;
     padding: 10px;
     bottom: 0px;
+    color:#fff;
+    z-index: 10000;
 }

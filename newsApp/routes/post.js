@@ -9,7 +9,6 @@ router.post('/', async (req, res)=>{
     let subject = req.body.subject;
     let image = req.body.image;
     let contents = req.body.contents;
-
     if(token){
         let article = new Article({ 
             email :  decode.email,
@@ -18,8 +17,10 @@ router.post('/', async (req, res)=>{
             image :  image,
             contents : contents
         })
-        res.render('post', {title: 'NewsPage', subject: subject, image: image, contents: contents, data : "login", status : "post"})
         await article.save()
+        let dataObject = await Article.find({})
+        let dataObjectId = dataObject[dataObject.length-1]._id
+        res.redirect(`/post/${dataObjectId}`)
     }
 })
 
@@ -30,10 +31,9 @@ router.get('/', (req, res)=>{
     }
 })
 
-router.post('/save', (req, res) => {
-    return res.redirect('/post')
-});
-
-
+router.get('/:id', async (req, res)=>{
+    let dataObject = await Article.findOne({_id: req.params.id})
+    res.render('post', {title: 'NewsPage', subject: dataObject.subject, image: dataObject.image, contents: dataObject.contents, data : "login", status : "post"})
+})
 
 module.exports = router;
