@@ -19,7 +19,7 @@ module.exports = function () {
                 res.cookie('access-token', token);
                 return res.redirect('/')
             }
-            res.render('login', { err: msg[40001] });
+            res.render('login', { err: msg[40001]});
         })
     });
 

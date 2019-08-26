@@ -27,13 +27,35 @@ router.post('/', async (req, res)=>{
 router.get('/', (req, res)=>{
     let token = req.cookies["access-token"];
     if(token){
-        res.render('report', {title: 'Report', data : "login", status : "post"})
+        res.render('report', {
+            title: 'Report', 
+            data : "login", 
+            status : "post"
+        })
     }
 })
 
 router.get('/:id', async (req, res)=>{
     let dataObject = await Article.findOne({_id: req.params.id})
-    res.render('post', {title: 'NewsPage', subject: dataObject.subject, image: dataObject.image, contents: dataObject.contents, data : "login", status : "post"})
+    let token = req.cookies["access-token"];
+    if(token){
+        res.render('post', {
+            title: 'NewsPage', 
+            subject: dataObject.subject, 
+            image: dataObject.image, 
+            contents: dataObject.contents, 
+            status : "post",
+            data : "login"
+        })
+    } else {
+        res.render('post', {
+            title: 'NewsPage', 
+            subject: dataObject.subject, 
+            image: dataObject.image, 
+            contents: dataObject.contents, 
+            status : "post"
+        })
+    }
 })
 
 module.exports = router;

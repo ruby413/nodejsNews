@@ -1,29 +1,35 @@
 const express = require('express');
 const jwt = require("jsonwebtoken");
-const Article = require('../schemas/article');
+const middleware = require("../routes/middlewares");
 const router = express.Router();
 
-router.get('/', async(req, res, next) => {
+
+router.get('/', async (req, res, next) => {
     let token = req.cookies["access-token"];
     let decode = jwt.verify(token, process.env.COOKIE_SECRET, (err, decoded) => {return err ? false : decoded;});
-    let article = [];
-    let contentAll = await Article.find({})
-    contentAll.forEach( (content, i) => { if(contentAll.length-5<=i){article.push(content)} } )
+    let article = await middleware.articleArray();
     if(token && decode){
-        console.log(article[0])
-        res.render('main', {title: 'NewsPage', data: "login", article : article})
+        res.render('main', {
+            title: 'NewsPage', 
+            data: "login", 
+            article
+        })
     }else{
-        console.log(article[0])
-
-        res.render('main', {title: 'NewsPage', data: "notLogin", article : article})
+        res.render('main', {
+            title: 'NewsPage', 
+            data: "notLogin", 
+            article
+        })
     }
   });
-router.get('/login', (req, res) => {
-    res.render('login', {title: 'LoginPage'})
+router.get('/login', async (req, res) => {
+    let article = await middleware.articleArray();
+    res.render('login', {title: 'LoginPage', article})
 });
 
-router.get('/join', (req, res) => {
-    res.render('join', {title : 'signUpPage'})
+router.get('/join', async (req, res) => {
+    let article = await middleware.articleArray();
+    res.render('join', {title : 'SignUpPage', article})
 })
 
 module.exports = router;

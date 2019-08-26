@@ -19,9 +19,11 @@ html
         else 
           a#loginButtomMain(href = '/login') Login
           a#joinButtonMain(href = '/join') Sign up
+          if status == "post"
+            a#home(href="/") HOME
     if status !== "post"
       ul.newCardUl
-        if article
+        if article 
           each val in article
             li.newCardLi
               a(href=`/post/${val._id}`)
