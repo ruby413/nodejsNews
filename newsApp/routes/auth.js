@@ -32,12 +32,7 @@ module.exports = function () {
             }else{
                 let {email, name, password} = req.body
                 bcrypt.hash(password, null, null, async (err, hash) => {
-                    let user = new User({ 
-                        email : email,
-                        name :  name,
-                        password : hash,
-                        privilege : "normal" 
-                    })
+                    let user = new User({ email, name, password : hash, privilege : "normal" })
                     await user.save()
                 })
                 res.redirect('/login')

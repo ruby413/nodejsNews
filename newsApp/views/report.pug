@@ -1,7 +1,7 @@
 extends main
 
 block content
-    if data == "login"
+    if login
         div#writeDiv
             form#join-form(action='/post' method='post')
                 span#writeSpan 제목
