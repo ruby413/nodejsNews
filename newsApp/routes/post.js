@@ -1,14 +1,11 @@
 const express = require('express');
 const Article = require('../schemas/article');
 const middleware = require("../routes/middlewares");
-const jwt = require("jsonwebtoken");
 const router = express.Router();
 
 router.post('/', async (req, res)=>{
     let {email, name} = middleware.loginInfo(req, res)
-    let subject = req.body.subject;
-    let image = req.body.image;
-    let contents = req.body.contents;
+    let {subject, image, contents} = req.body;
     let article = new Article({ email, name, subject, image, contents})
     await article.save()
     let dataObject = await Article.find({})
@@ -27,9 +24,9 @@ router.get('/', (req, res)=>{
 
 router.get('/:id', async (req, res)=>{
     let dataObject = await Article.findOne({_id: req.params.id})
-    let { _id, email, name, subject, image, contents } = dataObject
+    let { _id, email, name, subject, image, contents, reportDate } = dataObject
     let login = middleware.loginCheck(req, res)
-    res.render('post', { title: 'NewsPage', status : "post", login , subject, image, contents })
+    res.render('post', { title: 'NewsPage', status : "post", email, name, login , subject, image, contents, reportDate })
 })
 
 module.exports = router;

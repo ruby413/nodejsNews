@@ -1,7 +1,7 @@
 @charset "utf-8"; 
 * {padding : 0px; margin :0px;}
 body{    
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
 }
 .h1Container{
     text-align: center
@@ -73,3 +73,38 @@ h1 img{
     color:#fff;
     z-index: 10000;
 }
+
+.viewDiv{
+    width: 80%;
+    margin-left: 10%;
+    text-align: left;
+}
+
+.reportSubjectReport{
+    font-size: 32px;
+    font-weight: bold;
+    margin: 32px 0;
+}
+
+.reportWrite{
+    color: #989898;
+    text-align: right;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #f1f1f1;
+}
+
+.reportDate{
+    color: #989898;
+    text-align: right;
+}
+
+.reportImgReport{
+    margin-top: 20px;
+}
+
+.report{
+    font-size: 18px;
+    text-align: left;
+    margin-top: 43px;
+    line-height: 42px;
+} 

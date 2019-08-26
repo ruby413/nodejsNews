@@ -1,9 +1,12 @@
 extends main
 
 block content
-  div#viewDiv
-    span#writeSpan 제목
-    p#subjectReport #{subject}
-    img#imgReport(src=image)
-    p#subjectReport #{contents}
+  div.viewDiv
+    p.reportSubjectReport #{subject}
+    p.reportDate #{reportDate}
+    p.reportWrite
+      span.reportName #{name} 기자 | 
+      span.reportEmail #{email}
+    img.reportImgReport(src=image)
+    p.report #{contents}
     
