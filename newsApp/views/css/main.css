@@ -3,6 +3,13 @@
 body{    
     /* overflow-y: hidden; */
 }
+.headContainer{
+    position: fixed;
+    display: block;
+    width: 100%;
+    z-index: 100000;
+    background: #fff;
+}
 .h1Container{
     text-align: center
 }
@@ -17,6 +24,9 @@ h1{
 }
 h1 img{
     width: 342px;
+}
+.bodyContents{
+    padding-top: 103px;
 }
 .newCardUl{
     text-align: center;
@@ -78,6 +88,7 @@ h1 img{
     width: 80%;
     margin-left: 10%;
     text-align: left;
+    padding-top: 103px;
 }
 
 .reportSubjectReport{
@@ -108,3 +119,61 @@ h1 img{
     margin-top: 43px;
     line-height: 42px;
 } 
+
+#writeDiv{
+    padding-top: 145px;
+}
+
+#writeSpan{
+    font-size: 25px;
+}
+
+.postInput input#subject{
+    width: 772px;
+    margin-left: 58px;
+    padding: 5px;
+    font-size: 20px;
+    background: #F8F8F8;
+    height: 35px;
+    color: #555;
+    border: 1px solid #ddd;
+    margin-bottom : 10px
+}
+
+.postInput input#image{
+    width: 772px;
+    margin-left: 30px;
+    padding: 5px;
+    font-size: 20px;
+    background: #F8F8F8;
+    height: 35px;
+    color: #555;
+    border: 1px solid #ddd;
+    margin-bottom : 10px
+}
+
+.postInput{
+    width: 75%;
+    margin-left: 12%;
+    text-align: center;
+}
+
+.postInput #content{
+    width: 883px;
+    height: 400px;
+    color: #555;
+    border: 1px solid #ddd;
+    background: #F8F8F8;
+    font-size: 20px;
+    resize: none;
+}
+
+.postInput #save{
+    padding: 10px 27px;
+    font-size: 21px;
+    background: #5CB6E8;
+    color:#fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 15px;
+}

@@ -2,6 +2,7 @@ const User = require('../schemas/user');
 const msg = require('../routes/errormsg');
 const jwt = require("jsonwebtoken");
 const express = require('express');
+const middleware = require("../routes/middlewares");
 const bcrypt = require('bcrypt-nodejs')
 const router = express.Router();
 
@@ -14,12 +15,14 @@ module.exports = function () {
         opts.expiresIn = 60 * 60 * 24 * 7;  
         const secret = process.env.COOKIE_SECRET; 
         const token = jwt.sign({ name : isUserName['name'], email : email }, secret, opts);
+        let article = await middleware.articleArray();
+
         bcrypt.compare(password, isUserId.password,  (err, isUserPw) => {
             if(isUserId && isUserPw){
                 res.cookie('access-token', token);
                 return res.redirect('/')
             }
-            res.render('login', { err: msg[40001]});
+            res.render('login', { err: msg[40001], article});
         })
     });
 

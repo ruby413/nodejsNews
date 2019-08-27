@@ -3,11 +3,11 @@ extends main
 block content
     if login
         div#writeDiv
-            form#join-form(action='/post' method='post')
+            form.postInput(action='/post' method='post')
                 span#writeSpan 제목
                 input#subject(type="text" name="subject")
                 span#writeSpan 이미지      
                 input#image(type="text" name="image")
                 textarea#content(name="contents", cols="30", rows="10")
-                button#save(type='submit') save
+                button#save(type='submit') 저 장
         

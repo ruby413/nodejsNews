@@ -5,34 +5,36 @@ html
     link(rel='stylesheet', href='/css/main.css')
     link(rel='stylesheet', href='/css/login.css')
   body
-    .h1Container
-        h1 
-          a#home(href="/") 
-            img(src="../image/h1_image.png")
-    div#loginSection
-        if login
-          a#logout(href="/auth/logout") logout
-          div#postButtonDiv
-          if status == "post"
-            a#home(href="/") home
-          else
-            a#post(href="/post") post
-        else 
-          a#loginButtomMain(href = '/login') Login
-          a#joinButtonMain(href = '/join') Sign up
-          if status == "post"
-            a#home(href="/") HOME
+    .headContainer
+      .h1Container
+          h1 
+            a#home(href="/") 
+              img(src="../image/h1_image.png")
+      div#loginSection
+          if login
+            a#logout(href="/auth/logout") logout
+            div#postButtonDiv
+            if status == "post"
+              a#home(href="/") HOME
+            else if privilege == "reporter"
+              a#post(href="/post") post
+          else 
+            a#loginButtomMain(href = '/login') Login
+            a#joinButtonMain(href = '/join') Sign up
+            if status == "post"
+              a#home(href="/") HOME
     if status !== "post"
-      ul.newCardUl
-        if article 
-          each val in article
+      .bodyContents
+        ul.newCardUl
+          if article 
+            each val in article
+              li.newCardLi
+                a(href=`/post/${val._id}`)
+                  p.newCardSubject= val.subject
+                  p.newCardContents= val.contents
+                  p.black 
+                  img.newCardImg(src= val.image)
+          else
             li.newCardLi
-              a(href=`/post/${val._id}`)
-                p.newCardSubject= val.subject
-                p.newCardContents= val.contents
-                p.black 
-                img.newCardImg(src= val.image)
-        else
-          li.newCardLi
-            p.noContent 내용이 없습니다.
+              p.noContent 내용이 없습니다.
     block content

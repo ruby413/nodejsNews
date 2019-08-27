@@ -6,7 +6,9 @@ const router = express.Router();
 router.get('/', async (req, res, next) => {
     let login = middleware.loginCheck(req, res)
     let article = await middleware.articleArray();
-    res.render('main', { title: 'NewsPage', login, article })
+    let privilegeUser = await middleware.privilegeCheck(req, res);
+    let privilege = privilegeUser[0] ? privilegeUser[0].privilege : false;
+    res.render('main', { title: 'NewsPage', login, article, privilege})
   });
 
 router.get('/login', async (req, res) => {
