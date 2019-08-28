@@ -9,4 +9,12 @@ block content
       span.reportEmail #{email}
     img.reportImgReport(src=image)
     p.report #{contents}
+
+  .commentDiv
+    form.commentInput(action='/post/comment' method='post')
+      textarea#content(name="contents", cols="30", rows="10")
+      button#save(type='submit') 등 록
+
+
+
     

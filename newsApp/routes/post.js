@@ -16,7 +16,7 @@ router.post('/', async (req, res)=>{
 router.get('/', (req, res)=>{
     let login = middleware.loginCheck(req, res)
     res.render('report', {
-        title: 'Report', 
+        title : 'Report', 
         status : "post",
         login
     })
@@ -27,6 +27,13 @@ router.get('/:id', async (req, res)=>{
     let { _id, email, name, subject, image, contents, reportDate } = dataObject
     let login = middleware.loginCheck(req, res)
     res.render('post', { title: 'NewsPage', status : "post", email, name, login , subject, image, contents, reportDate })
+})
+
+router.post('/comment', async (req, res)=>{
+    // let {email, name} = middleware.loginInfo(req, res)
+    // let dataObject = await Article.findOne({email: email}); 이메일 안됨
+    console.log(dataObject)
+    // req.body.contents
 })
 
 module.exports = router;

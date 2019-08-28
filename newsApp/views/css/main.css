@@ -177,3 +177,35 @@ h1 img{
     cursor: pointer;
     margin-top: 15px;
 }
+
+.commentInput{
+    margin-top: 40px;
+    width: 80%;
+    margin-left: 10%;
+}
+
+.commentInput textarea{
+    width: 87%;
+    resize: none;
+    color: #555;
+    border: 1px solid #ddd;
+    background: #F8F8F8;
+    height: 30px;
+    padding: 5px;
+    font-size: 16px;
+    float: left;
+}
+
+.commentInput #save {
+    padding: 10px 21px;
+    font-size: 18px;
+    background: #5CB6E8;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-left: 1%;
+    margin-bottom: 27px;
+    float: left;
+}
+
+
