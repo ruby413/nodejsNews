@@ -22,7 +22,8 @@ let Article = mongoose.model('Article', new mongoose.Schema({
     default: Date.now
   },
   contents: {
-    type: String
+    type: String,
+    required : true
   },
   comments: {
     type: String
