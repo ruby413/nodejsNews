@@ -12,7 +12,8 @@ block content
 
   .commentDiv
     form.commentInput(action='/post/comment' method='post')
-      textarea#content(name="contents", cols="30", rows="10")
+      textarea#comment(name="comments", cols="30", rows="10")
+      textarea.displayNone(name="contents") #{contents}
       button#save(type='submit') 등 록
 
 

@@ -26,10 +26,7 @@ let Article = mongoose.model('Article', new mongoose.Schema({
     required : true
   },
   comments: {
-    type: String
-  },
-  commentsGood: {
-    type: Number
+    type: Object
   }
 }));
 

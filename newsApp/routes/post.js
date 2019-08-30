@@ -30,10 +30,15 @@ router.get('/:id', async (req, res)=>{
 })
 
 router.post('/comment', async (req, res)=>{
-    // let {email, name} = middleware.loginInfo(req, res)
-    // let dataObject = await Article.findOne({email: email}); 이메일 안됨
-    console.log(dataObject)
-    // req.body.contents
+    let {email, name} = middleware.loginInfo(req, res)
+    let comment = req.body.comments
+    let comments = {"email" : email, "name" : name, "comment" : comment}
+    let contents = req.body.contents
+    let dataObject = await Article.findOne({contents: contents});
+    console.log(comments)
+    // let article = new Article({comments})
+    await Article.update({contents: contents}, {comments : comments})
+    res.redirect(`/post/${dataObject._id}`)
 })
 
 module.exports = router;
