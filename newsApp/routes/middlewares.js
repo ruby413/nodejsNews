@@ -21,7 +21,7 @@ exports.loginInfo = (req, res) => {
     let email = decode.email
     let name = decode.name
     return {email, name}
-}
+} 
 
 exports.privilegeCheck = async (req, res) =>{
     let userInfo = await User.find({})
