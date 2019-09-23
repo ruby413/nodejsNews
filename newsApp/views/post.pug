@@ -11,6 +11,13 @@ block content
     p.report #{contents}
 
   .commentDiv
+    if comments
+      div.commentList 
+        span.allComment 전체 댓글
+        p.commentListP
+          span.commentListName #{comments.name} | #{comments.email}
+          span.commentListComment #{comments.comment}
+        
     form.commentInput(action='/post/comment' method='post')
       if login
         textarea#comment(name="comments", cols="30", rows="10")

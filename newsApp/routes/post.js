@@ -24,9 +24,9 @@ router.get('/', (req, res)=>{
 
 router.get('/:id', async (req, res)=>{
     let dataObject = await Article.findOne({_id: req.params.id})
-    let { _id, email, name, subject, image, contents, reportDate } = dataObject
+    let { _id, email, name, subject, image, contents, reportDate, comments } = dataObject
     let login = middleware.loginCheck(req, res)
-    res.render('post', { title: 'NewsPage', status : "post", email, name, login , subject, image, contents, reportDate })
+    res.render('post', { title: 'NewsPage', status : "post", email, name, login , subject, image, contents, reportDate, comments })
 })
 
 router.post('/comment', async (req, res)=>{
@@ -35,8 +35,6 @@ router.post('/comment', async (req, res)=>{
     let comments = {"email" : email, "name" : name, "comment" : comment}
     let contents = req.body.contents
     let dataObject = await Article.findOne({contents: contents});
-    console.log(comments)
-    // let article = new Article({comments})
     email ? await Article.update({contents: contents}, {comments : comments}) : false
     res.redirect(`/post/${dataObject._id}`)
 })
