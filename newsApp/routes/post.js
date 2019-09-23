@@ -37,7 +37,7 @@ router.post('/comment', async (req, res)=>{
     let dataObject = await Article.findOne({contents: contents});
     console.log(comments)
     // let article = new Article({comments})
-    await Article.update({contents: contents}, {comments : comments})
+    email ? await Article.update({contents: contents}, {comments : comments}) : false
     res.redirect(`/post/${dataObject._id}`)
 })
 

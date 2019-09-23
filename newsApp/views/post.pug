@@ -12,10 +12,12 @@ block content
 
   .commentDiv
     form.commentInput(action='/post/comment' method='post')
-      textarea#comment(name="comments", cols="30", rows="10")
+      if login
+        textarea#comment(name="comments", cols="30", rows="10")
+        button#save(type='submit') 등 록
+      else
+        textarea#comment(name="comments", cols="30", rows="10" disabled="disabled" ) 로그인 후 이용해주세요.
+        p#save 등 록
       textarea.displayNone(name="contents") #{contents}
-      button#save(type='submit') 등 록
-  block content
 
-
-    
+   
